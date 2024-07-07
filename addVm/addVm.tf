@@ -45,7 +45,6 @@ resource "azurerm_subnet" "subnet1" {
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet1.name
   address_prefixes     = ["10.0.2.0/24"]
-  tags     = local.commonTags
 }
 
 resource "azurerm_network_interface" "vnetInt1" {
