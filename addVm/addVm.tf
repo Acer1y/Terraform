@@ -6,7 +6,7 @@ locals {
   location = "useast"
   commonTags = {
     createdby = "me"
-    tier = "production"
+    tier      = "production"
   }
 }
 
@@ -29,31 +29,31 @@ provider "azurerm" {
 resource "azurerm_resource_group" "rg" {
   name     = "addVMTest"
   location = "eastus"
-  tags = local.commonTags
+  tags     = local.commonTags
 }
 
 resource "azurerm_virtual_network" "vnet1" {
-  name = "vnet1"
-  address_space = ["10.0.0.0/16"]
-  location = azurerm_resource_group.rg.location
+  name                = "vnet1"
+  address_space       = ["10.0.0.0/16"]
+  location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 }
 
-resource "azurerm_subnet" "subnet1"{
-  name = "internal"
-  resource_group_name = azurerm_resource_group.rg.name
+resource "azurerm_subnet" "subnet1" {
+  name                 = "internal"
+  resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet1.name
-  address_prefixes = ["10.0.2.0/24"]
+  address_prefixes     = ["10.0.2.0/24"]
 }
 
 resource "azurerm_network_interface" "vnetInt1" {
-  name = "vmTestNic"
-  location = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name 
+  name                = "vmTestNic"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
 
   ip_configuration {
-    name = "internal"
-    subnet_id = azurerm_subnet.subnet1.id
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.subnet1.id
     private_ip_address_allocation = "Dynamic"
   }
 }
@@ -62,11 +62,11 @@ resource "azurerm_windows_virtual_machine" "tfTestVM" {
   name                = "tfTestVM"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  size                = "B1s"
+  size                = "standard_b1s"
   admin_username      = "adminuser"
   admin_password      = "P@$$w0rd1234!"
   network_interface_ids = [
-    azurerm_network_interface.vnetInt1,
+    azurerm_network_interface.vnetInt1.id,
   ]
 
   os_disk {
