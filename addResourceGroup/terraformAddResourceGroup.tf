@@ -1,4 +1,6 @@
-# tf file for adding a resource group 
+# tf file for adding a resource group. This is from the TerraForm example: https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build
+# Executed tf configuration, then ran destroy to delete the added resource. TFState only contained configuration for this resource group.
+
 
 # Set the provider, AzureRM in this case for managing resources
 terraform {

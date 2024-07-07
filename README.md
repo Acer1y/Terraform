@@ -6,3 +6,6 @@ This is the main repository for all Terraform based projects. Each branch is its
 
 7/6/24
     Added branch for creating a resource group. 
+
+7/7/24
+    Ran Resource Group tf and destroyed resource group.
