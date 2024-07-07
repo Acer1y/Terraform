@@ -9,3 +9,4 @@ This is the main repository for all Terraform based projects. Each branch is its
 
 7/7/24
     Ran Resource Group tf and destroyed resource group.
+    Merged Resource Group to Main.
