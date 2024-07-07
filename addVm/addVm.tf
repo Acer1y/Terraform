@@ -37,7 +37,7 @@ resource "azurerm_virtual_network" "vnet1" {
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  tags     = local.commonTags
+  tags                = local.commonTags
 }
 
 resource "azurerm_subnet" "subnet1" {
@@ -51,7 +51,7 @@ resource "azurerm_network_interface" "vnetInt1" {
   name                = "vmTestNic"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  tags     = local.commonTags
+  tags                = local.commonTags
 
   ip_configuration {
     name                          = "internal"
@@ -62,7 +62,7 @@ resource "azurerm_network_interface" "vnetInt1" {
 
 resource "azurerm_windows_virtual_machine" "tfTestVM" {
   name                = "tfTestVM"
-  tags     = local.commonTags
+  tags                = local.commonTags
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   size                = "standard_b1s"
@@ -91,7 +91,7 @@ resource "azurerm_network_security_group" "testNSG" {
   resource_group_name = azurerm_resource_group.rg.name
   tags = {
     reason = "Needs_port_22"
-    state = "Test-TerraForm"
+    state  = "Test-TerraForm"
   }
 
   security_rule {
