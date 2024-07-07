@@ -17,6 +17,6 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-    name = "My TF test Group" #intentionally added spaces to see what validate and format do.
+    name = "MyTFtestGroup" 
     location = "eastus2"
 }
