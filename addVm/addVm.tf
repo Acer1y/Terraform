@@ -49,7 +49,7 @@ resource "azurerm_subnet" "subnet1"{
 resource "azurerm_network_interface" "vnetInt1" {
   name = "vmTestNic"
   location = azurerm_resource_group.rg.location
-  resource_grou_name = azurerm_resource_group.rg.name 
+  resource_group_name = azurerm_resource_group.rg.name 
 
   ip_configuration {
     name = "internal"
@@ -66,7 +66,7 @@ resource "azurerm_windows_virtual_machine" "tfTestVM" {
   admin_username      = "adminuser"
   admin_password      = "P@$$w0rd1234!"
   network_interface_ids = [
-    azurerm_network_interface.example.id,
+    azurerm_network_interface.vnetInt1,
   ]
 
   os_disk {
