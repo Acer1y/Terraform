@@ -29,5 +29,6 @@ provider "azurerm" {
 resource "azurerm_resource_group" "rg" {
   name     = "addVMTest"
   location = "eastus"
-  tags = locals.commonTags
+  tags = local.commonTags
 }
+
