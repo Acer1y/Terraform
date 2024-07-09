@@ -1,4 +1,4 @@
-# Set the provider, AzureRM in this case for managing resources
+# Set AzureRM as provider
 terraform {
   required_providers {
     azurerm = {
